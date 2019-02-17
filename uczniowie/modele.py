@@ -23,17 +23,9 @@ class Klasa(BazaModel):
 class Uczen(BazaModel):
     imie = CharField(null=False)
     nazwisko = CharField(null=False)
-    plec = BooleanField()
+    plec = ForeignKeyField(Klasa, related_name='plec')
     klasa = ForeignKeyField(Klasa, related_name='uczniowie')
 
 class Plec(BazaModel):
 	plec_rodzaj = CharField(null=False)
 
-def main(args):
-    baza.connect()
-    baza.create_tables([Klasa, Uczen])
-
-
-if __name__ == '__main__':
-    import sys
-    sys.exit(main(sys.argv))

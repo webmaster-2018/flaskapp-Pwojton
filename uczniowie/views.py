@@ -26,20 +26,14 @@ def dodaj():
     
     form.plec.choices = [(g.id, g.plec_rodzaj) for g in Plec.select() ]
     
-    form.klasa.choices = [(k.id, k.klasa) for k in Klasa.select()]
-    
-    form.klasa.choices = [(c.id, c.klasa) for c in Klasa.select()]
+    form.klasa.choices = [(k.id, k.nazwa) for k in Klasa.select()]
     
     if form.validate_on_submit():
-        print(form.data)
         p = Uczen(imie=form.imie.data, nazwisko=form.nazwisko.data, plec=form.plec.data, klasa=form.klasa.data)
         p.save()
         
         flash("Dodano ucznia: {}".format(form.uczen.data))
         return redirect(url_for('lista'))
         
-    elif request.method == 'POST':
-        flash_errors(form)
-    
     return render_template('dodaj.html', form=form)
     

@@ -21,5 +21,5 @@ class UczenForm(FlaskForm):
     id = HiddenField()
     imie = StringField('Imie:', validators =[Required(message=blad1)])
     nazwisko = StringField('Nazwisko:', validators =[Required(message=blad1)])
-    plec = BooleanField('Plec:',  coerce=int)
+    plec = SelectField('Plec:',  coerce=int)
     klasa = SelectField('Klasa:',  coerce=int)

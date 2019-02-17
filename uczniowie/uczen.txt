@@ -1,11 +1,3 @@
-
-<<<<<<< HEAD
 Jan;Kowalski;1;1
 Anna;Nowak;2;1
 Kacper;Nowak;1;2
-=======
-Gieorgij;Zukow;1
-Iwan;Koniew;1
-Lawrientij;Beria;3
-Nikita;Chruszczow;2
->>>>>>> parent of 32d534e... dodawanie klas
