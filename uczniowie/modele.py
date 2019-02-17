@@ -5,7 +5,7 @@
 
 from peewee import *
 
-baza_plik = 'quiz.db'
+baza_plik = 'baza.db'
 baza = SqliteDatabase(baza_plik)  # instancja bazy
 
 ### MODELE #
@@ -26,11 +26,10 @@ class Uczen(BazaModel):
     plec = BooleanField()
     klasa = ForeignKeyField(Klasa, related_name='uczniowie')
 
+class Plec(BazaModel):
+	plec_rodzaj = CharField(null=False)
 
 def main(args):
-    # Uwaga: po utworzeniu modeli uruchom plik modele.py
-    # jeden raz w środowisku z zainstalowaną biblioteką peewee:
-    # python modele.py
     baza.connect()
     baza.create_tables([Klasa, Uczen])
 

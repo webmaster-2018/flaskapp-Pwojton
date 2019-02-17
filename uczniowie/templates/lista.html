@@ -4,13 +4,25 @@
 {% block tresc %}
 
 
-    <ol>
-    {% for p in pytania %}
-        <li>
-            {{ p.pytanie }}
-        </li>
-    {% endfor %}
-    </ol>
-
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">id</th>
+            <th scope="col">Imie</th>
+            <th scope="col">Nazwisko</th>
+            <th scope="col">Płeć</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for s in students %}
+        <tr>
+            <th scope="row">{{s}}</a></th>
+            <td>{{s.uczen_name}}</td>
+            <td>{{s.surname}}</td>
+            <td>{{s.gender_key}}</td>
+            {% endfor %}
+        </tr>
+    </tbody>
+</table>
 {% endblock %}
     

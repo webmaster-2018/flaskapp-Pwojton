@@ -21,19 +21,20 @@ def lista():
 
 @app.route("/dodaj", methods=['GET', 'POST'])
 def dodaj():
-    """Dodwanie pytań i odpowiedzi"""
+    """Dodwanie uczniów"""
     form = UczenForm()
+    
+    form.plec.choices = [(g.id, g.plec_rodzaj) for g in Plec.select() ]
+    
     form.klasa.choices = [(k.id, k.klasa) for k in Klasa.select()]
-
+    
+    form.klasa.choices = [(c.id, c.klasa) for c in Klasa.select()]
+    
     if form.validate_on_submit():
         print(form.data)
-        p = Uczen(imie=form.imie.data, nazwisko=form.nazwisko.data, plec=form.plec.data)
+        p = Uczen(imie=form.imie.data, nazwisko=form.nazwisko.data, plec=form.plec.data, klasa=form.klasa.data)
         p.save()
-        for o in form.odpowiedzi.data:
-            odp = Odpowiedz(odpowiedz=o['odpowiedz'],
-                            pytanie=p.id,
-                            odpok=int(o['odpok']))
-            odp.save()
+        
         flash("Dodano ucznia: {}".format(form.uczen.data))
         return redirect(url_for('lista'))
         
@@ -41,3 +42,4 @@ def dodaj():
         flash_errors(form)
     
     return render_template('dodaj.html', form=form)
+    
