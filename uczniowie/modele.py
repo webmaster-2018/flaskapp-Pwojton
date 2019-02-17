@@ -13,19 +13,17 @@ class BazaModel(Model):
     class Meta:
         database = baza
 
+class Plec(BazaModel):
+    plec_nazwa = CharField(null=False)
 
 class Klasa(BazaModel):
-    nazwa = CharField(null=False)
-    roknaboru = IntegerField(default=0)
-    rokmatury = IntegerField(default=0)
+    klasa = TextField(null=False)
+    rok_naboru = DateField()
+    rok_matury = DateField()
 
-    
 class Uczen(BazaModel):
     imie = CharField(null=False)
     nazwisko = CharField(null=False)
-    plec = ForeignKeyField(Klasa, related_name='plec')
-    klasa = ForeignKeyField(Klasa, related_name='uczniowie')
-
-class Plec(BazaModel):
-	plec_rodzaj = CharField(null=False)
+    plec = ForeignKeyField(Plec)
+    klasa = ForeignKeyField(Klasa)
 

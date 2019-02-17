@@ -44,12 +44,12 @@ def main(args):
     if os.path.exists(baza_plik):
         os.remove(baza_plik)
     baza.connect()
-    baza.create_tables([Klasa,Uczen,Plec])
+    baza.create_tables([Plec, Klasa, Uczen])
 
     dane = {
+        Plec: 'plec',
         Klasa: 'klasa',
         Uczen: 'uczen',
-		Plec: 'plec'
     }
 
     dodaj_dane(dane)

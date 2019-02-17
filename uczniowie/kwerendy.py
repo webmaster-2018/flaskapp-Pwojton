@@ -1,8 +1,8 @@
 import sqlite3
-from modele import Uczen
+from modele import Class, Student, Gender, Mark
 
 
-def student():
+def student(cur):
     cur.execute("""
             SELECT * FROM Uczen;
         """)
@@ -12,11 +12,11 @@ def student():
 
 def main(args):
     # KONFIGURACJA ####
-    baza_nazwa = 'baza'
+    baza_nazwa = 'students'
     con = sqlite3.connect(baza_nazwa + '.db')
     cur = con.cursor()
     ###################
-    student()
+    student(cur)
     con.commit()
     con.close()
     return 0
